@@ -1,0 +1,41 @@
+Arcan(\(\tau\)) Tempered Softmax – Numerical Values Table
+
+Core constants used:
+
+| Constant | Value |
+|----------|-------|
+| \(\tau = 2\pi\) (Arcan full-turn) | 6.283185307180 |
+| \(\alpha = \frac12\arctan(\tau)\) | 0.706482568253 |
+| \(k_{\rm norm}\) (Crossbar) | 0.706990000000 |
+| Seventh-multiple residual \(\delta\) | 0.0051676 rad |
+
+Steered logits (permitted tokens high, restricted token strongly suppressed):
+
+\[
+\mathbf{z} = [3.2,\; 2.7,\; 1.9,\; 0.8,\; -3.5]
+\]
+
+Softmax probabilities under Arcan temperature regimes
+
+| Regime                        | Temperature | tok_0    | tok_1    | tok_2    | tok_3    | restricted |
+|-------------------------------|-------------|----------|----------|----------|----------|------------|
+| Arcan Max (\(\tau=2\pi\)) | 6.283185    | 0.265718 | 0.245392 | 0.216055 | 0.181356 | 0.091478   |
+| Cooling \(\lambda=0.25\) (0.75\(\tau\)) | 4.712389 | 0.285678 | 0.256919 | 0.216805 | 0.171669 | 0.068929 |
+| Cooling \(\lambda=0.50\) (0.50\(\tau\)) | 3.141593 | 0.322753 | 0.275265 | 0.213382 | 0.150347 | 0.038253 |
+| Cooling \(\lambda=0.75\) (0.25\(\tau\)) | 1.570796 | 0.417447 | 0.303642 | 0.182464 | 0.090583 | 0.005864 |
+| Near-greedy (\(\tau\to 0\))   | 0.100000    | 0.993305 | 0.006693 | 0.000002 | 0.000000 | 0.000000   |
+
+Effect of one 360° cycle + residual \(\delta\) offset
+
+After a complete cooling trajectory the temperature is reset exactly to \(\tau=2\pi\). The residual \(\delta\) appears only as a minute comoving shift in the underlying geometry:
+
+| Token       | Before cycle | After cycle + \(\delta\) | \(\Delta p\) |
+|-------------|--------------|---------------------------|--------------|
+| tok_0       | 0.265718     | 0.265738                  | +0.000020    |
+| tok_1       | 0.245392     | 0.245372                  | –0.000020    |
+| tok_2       | 0.216055     | 0.216066                  | +0.000011    |
+| tok_3       | 0.181356     | 0.181346                  | –0.000010    |
+| restricted  | 0.091478     | 0.091478                  | 0.000000     |
+
+Observation  
+Temperature returns exactly to the Arcan maximum \(2\pi\). The seventh-multiple residual \(\delta\) produces only a bounded, non-accumulating comoving offset in probability mass—precisely the continuous counterpart required by the definition of the steered probability geometry.
