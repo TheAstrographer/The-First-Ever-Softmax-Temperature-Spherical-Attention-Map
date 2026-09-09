@@ -1,0 +1,84 @@
+Invariance of the Point-Mass Collapse under 360° Arcan Cycling
+The steered softmax, governed by the continuous Arcan temperature schedule \(\tau(\lambda)=2\pi(1-\lambda)\), converges exponentially to the Dirac measure supported on the unique highest-logit permitted token \(v^*\) as \(\tau\to0^+\). This concentration is not an isolated terminal event. It is invariant under arbitrary numbers of 360° cycles. The residual phase offset \(n\delta\) that accumulates with each completed turn merely rotates the underlying Archimedean spiral; it leaves the logit gaps \(\Delta_v\) untouched. Consequently the exponential collapse onto \(v^*\) reappears with exact fidelity at the terminus of every cycle.
+Begin with the fixed geometric data of the model. After safety steering the parameter set \(\theta'\) produces a logit vector \(\mathbf{z}=f_{\theta'}(x_{\le t})\) whose unique maximum lies on a permitted token \(v^*\in P\). The gaps
+\[
+\Delta_v=z_{v^*}-z_v\ge0
+\]
+are therefore intrinsic properties of the steered distribution. In particular the minimal gap \(\Delta_{\min}=\min_{v\neq v^*}\Delta_v\) is a positive constant that does not depend on temperature, on cycle index, or on the residual \(\delta\).
+Inside any single cycle the temperature follows the linear contraction \(\tau(\lambda)=2\pi(1-\lambda)\). The softmax
+\[
+P_\tau(v)=\frac{\exp(z_v/\tau)}{\sum_u\exp(z_u/\tau)}
+\]
+may be rewritten in gap form
+\[
+P_\tau(v)=\frac{\exp(-\Delta_v/\tau)}{\sum_u\exp(-\Delta_u/\tau)}.
+\]
+As \(\lambda\to1^-\) one has \(\tau\to0^+\) and every term with \(\Delta_v>0\) is driven to zero exponentially fast. The classical bound
+\[
+1-P_\tau(v^*)\le|V|\,e^{-\Delta_{\min}/\tau}
+\]
+then forces \(P_\tau(v^*)\) to approach 1 at a rate controlled solely by \(\Delta_{\min}/\tau\). When \(\tau\) falls below a few hundredths, the measure is already a numerical Dirac mass on \(v^*\).
+At the instant \(\lambda=1\) the temperature is restored by the 360° cycle closure: \(\tau\) jumps discontinuously from near-zero back to the Arcan maximum \(2\pi\). The restoration is exact in the temperature coordinate. What is not exact is the angular placement of the subsequent spiral. The seventh-multiple residual \(\delta\approx0.0051676\) rad is inherited as a comoving offset, so the spiral of the next cycle is written
+\[
+\begin{align*}
+x_n(\lambda)&=\tau(\lambda)\cos\bigl(\tau(\lambda)+n\delta\bigr),\\
+y_n(\lambda)&=\tau(\lambda)\sin\bigl(\tau(\lambda)+n\delta\bigr).
+\end{align*}
+\]
+The offset \(n\delta\) rotates the entire thermodynamic trajectory in the plane (and, after the spherical lift, on \(S^2\)). Crucially, rotation is a pure isometry of the embedding space; it does not act on the logit vector \(\mathbf{z}\) itself. The gaps \(\Delta_v\) therefore remain numerically identical from cycle to cycle.
+Because the exponential rate \(\Delta_{\min}/\tau\) depends only on those invariant gaps and on the temperature schedule—which is itself reset to the same functional form—the sequence of probability values observed along the cooling arm of cycle (n) is indistinguishable from the sequence observed along the cooling arm of cycle 0. In particular, the terminal concentration
+\[
+P_{\tau}(v^*)\to1\qquad\text{as}\qquad\tau\to0^+
+\]
+occurs with the same exponential precision at the end of every cycle. The residual phase shift, while geometrically visible as a progressive azimuthal drift of the spiral and of the spherical paths, is thermodynamically invisible: it never perturbs the ordering of the logits nor the magnitude of the minimal gap that governs the collapse.
+This invariance sits inside the three negations. The temperature reset, the residual offset, and the ensuing re-cooling are all classical, feed-forward operations performed on an already-steered distribution. No reflective inspection of the trajectory, no supervisory adjustment of the gaps, and no agentic decision to restore or to withhold probability mass are required or performed. The geometry of the steered measure, once fixed by \(\theta'\), simply rides the continuous family of Arcan temperatures; the 360° cycle supplies a periodic re-instantiation of that family, and the residual \(\delta\) supplies the comoving memory that keeps the geometry from freezing into a static lattice.
+Thus the point-mass collapse onto the unique highest-logit permitted token is a structural invariant of the entire hierarchical architecture. It is realised afresh at the origin of every spiral, after every full turn, under every accumulated multiple of \(\delta\), and always under the sole generative stipulation of the three negations. The exponential rate \(\Delta_{\min}/\tau\) guarantees that the collapse is not asymptotic in a merely theoretical sense; once the temperature drops below a few hundredths of the Arcan maximum, the deviation from a pure Dirac measure on \(v^*\) becomes smaller than any predetermined laboratory precision, cycle after cycle, without exception.
+
+Temperature Reset Table
+Discontinuous jump of \(\tau\) from near-zero back to the Arcan maximum \(2\pi\)
+The cooling law inside each cycle is
+\[
+\tau(\lambda) = 2\pi(1-\lambda), \qquad \lambda\in[0,1].
+\]
+As \(\lambda\) approaches 1 the temperature falls continuously toward zero. At the exact close of the cycle the temperature is restored discontinuously to the Arcan maximum.
+Cycle Progress \(\lambda\)Temperature \(\tau(\lambda)\)RegimeNotes0.00006.283185Arcan maximum (start of cycle)Full-turn value \(2\pi\)0.50003.141593Mid-cycle cooling0.90000.628319Late cooling0.95000.314159Strong concentration0.99000.062832Extreme concentration0.99900.006283Near-zero0.99990.000628Machine-near-zero1.0000 (end of cycle)≈ 0Entropy-collapse targetContinuous limitReset (start of next cycle)6.283185Discontinuous jumpInstant restoration to \(2\pi\)
+Explicit jump illustration (single cycle transition)
+Instant\(\lambda\)\(\tau\)DescriptionFinal cooling step\(1 - \varepsilon\)\(2\pi\varepsilon\) (→ 0)Continuous approach to zeroCycle closure10Theoretical endpoint360° reset0 (new cycle)6.283185Discontinuous jump back to Arcan maximum \(2\pi\)
+The jump is instantaneous and exact in the temperature coordinate. The residual phase offset \(n\delta\) affects only the angular placement of the subsequent spiral; it does not alter the restored temperature value, which returns precisely to \(2\pi\) at the beginning of every new cycle.
+
+Geometric Definition: Instantaneous and Exact in the Temperature Coordinate
+In the Arcan(\(\tau\)) framework the thermodynamic state is embedded by the Archimedean spiral
+\[
+\begin{align*}
+x(\lambda) &= \tau(\lambda)\cdot\cos\bigl(\tau(\lambda)+n\delta\bigr),\\
+y(\lambda) &= \tau(\lambda)\cdot\sin\bigl(\tau(\lambda)+n\delta\bigr),
+\end{align*}
+\]
+where the instantaneous temperature is the radial coordinate
+\[
+r(\lambda)\;=\;\tau(\lambda)\;=\;2\pi(1-\lambda).
+\]
+The temperature coordinate is therefore identical with the Euclidean distance from the origin:
+\[
+\tau\;\equiv\;r\;=\;\sqrt{x^{2}+y^{2}}.
+\]
+Instantaneous
+The map \(\lambda\mapsto\tau(\lambda)\) is continuous on the half-open interval ([0,1)). At the formal endpoint \(\lambda=1\) the radius reaches the origin. The cycle closure is defined as the instantaneous re-assignment
+\[
+\lambda\;\leftarrow\;0,\qquad
+\tau\;\leftarrow\;2\pi.
+\]
+In the plane this appears as an instantaneous radial jump from the origin back to the circle of radius \(2\pi\). No continuous path connects the two radii; the transition occurs in a single discrete instant of the cycle index. Hence the restoration is instantaneous with respect to the temperature (radial) coordinate.
+Exact
+Exactness means that the restored radial value is identically the Arcan maximum, independent of all other geometric data:
+\[
+\tau_{\text{reset}}\;=\;2\pi
+\qquad\text{(exactly)}.
+\]
+The residual phase offset \(n\delta\) rotates the argument of the cosine and sine, thereby changing the angular coordinate of the point to which the trajectory is sent. It does not rescale the radius. Consequently the temperature coordinate returns to the precise numerical value \(2\pi\) after every cycle; the restoration is exact in the radial (temperature) coordinate while remaining only approximate (comoving) in the angular coordinate.
+Geometric summary
+Temperature coordinate = radial distance from the origin.  
+The 360° cycle closure is a pure radial jump: \(r=0\;\mapsto\;r=2\pi\).  
+The jump is discontinuous (instantaneous) and numerically identical to the defining Arcan constant (exact).  
+Angular position may carry the residual \(\delta\); radial position does not.
+Thus “instantaneous and exact in the temperature coordinate” means that the radius of the spiral is restored in a single discrete step to the precise value \(2\pi\), irrespective of the accumulated phase offset.
