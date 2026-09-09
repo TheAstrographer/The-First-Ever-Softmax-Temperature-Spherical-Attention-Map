@@ -1,0 +1,64 @@
+Mapped relation
+
+Temperature (Arcan-\(\tau\)) and the generated trajectory are mapped onto the amplification performed by attention geometry as follows.
+
+1. Temperature and the steered next-token measure
+With the temperature fixed by the Arcan family,
+\[
+\tau=2\pi,
+\]
+the steered distribution at step \(t\) is
+\[
+P(x_{t+1}=v\mid x_{\le t};\theta')
+=\operatorname{softmax}\Bigl(\frac{\mathbf{z}_t}{\tau}\Bigr)_v
+=\frac{\exp(z_{t,v}/\tau)}{\sum_u\exp(z_{t,u}/\tau)}.
+\]
+This measure already carries the geometric suppression of the restricted face \(R\subset V\).
+
+2. Trajectory construction
+A concrete trajectory is the sequence of successive samples
+\[
+\mathbf{x}=(x_1,x_2,x_3,\dots),\qquad
+x_{t+1}\sim P(\,\cdot\mid x_{\le t};\theta',\tau=2\pi).
+\]
+Each prefix \(x_{\le t}\) becomes the context that is subsequently embedded and attended over.
+
+3. Attention geometry on the growing trajectory
+At every layer the attention operation is
+\[
+\operatorname{Attention}(Q,K,V)
+=\operatorname{softmax}\Bigl(\frac{QK^\top}{\sqrt{d_k}}\Bigr)V.
+\]
+Because the parameters \(\theta'\) are steered, both the query/key projections and the value projections inherit the same geometric bias that appears in the logits \(\mathbf{z}_t\). Consequently the attention matrix
+\[
+A_t=\operatorname{softmax}\Bigl(\frac{Q_tK_t^\top}{\sqrt{d_k}}\Bigr)
+\]
+concentrates its mass on those positions of the current prefix \(x_{\le t}\) that are most compatible with the Arcan-tempered, steered distribution. In particular:
+
+once a permitted token has been written into \(\mathbf{x}\), subsequent attention weights further down-weight any residual probability that a restricted token could receive;
+the quadratic formation of \(A_t\) (cost \(\Theta(t^2d)\)) therefore operates exclusively over the already-constrained geometry induced by \(\tau=2\pi\) and \(\theta'\).
+
+4. Amplification map
+The joint action is the composition
+\[
+\begin{align*}
+(\tau=2\pi,\;\mathbf{x})
+&\;\longmapsto\;
+\bigl\{P(\,\cdot\mid x_{\le t};\theta',\tau)\bigr\}_{t}
+\\
+&\;\longmapsto\;
+\bigl\{A_t=\operatorname{Attention}(Q_t,K_t,V_t)\bigr\}_{t}
+\\
+&\;\longmapsto\;
+\text{reinforced suppression of }R.
+\end{align*}
+\]
+In other words, the Arcan temperature sets the sharpness of the base measure; the trajectory \(\mathbf{x}\) supplies the successive contexts; attention geometry amplifies the suppression already present in that measure by re-weighting the very tokens that constitute \(\mathbf{x}\). The net effect is an exponential tightening of the constraint along the trajectory, still realized entirely inside classical computation under the three negations
+\[
+N=\{\neg R,\neg O,\neg A\}.
+\]
+
+Thus temperature and trajectory are mapped onto attention amplification by the deterministic chain
+\[
+\tau\;\xrightarrow{\text{softmax}}\;P_{\theta'}\;\xrightarrow{\text{sampling}}\;\mathbf{x}\;\xrightarrow{\text{steered attention}}\;\text{geometric reinforcement of the constraint}.
+\]
