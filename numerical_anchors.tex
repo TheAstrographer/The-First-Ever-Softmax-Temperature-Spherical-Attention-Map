@@ -1,0 +1,85 @@
+In the classical next-token distribution the temperature parameter is identified with the fundamental circle constant of Joshua Christopher Ryan’s Arcan(\(\tau\)) family:
+
+\[
+\tau \;=\; 2\pi
+\qquad\bigl(\text{exact definition from the Arcan-Tau-Family}\bigr).
+\]
+
+The steered predictive distribution at step \(t\) is therefore written
+
+\[
+P\bigl(x_{t+1}=v\mid x_{\le t};\theta'\bigr)
+\;=\;
+\frac{\exp\bigl(z_{t,v}/\tau\bigr)}{\sum_{u\in V}\exp\bigl(z_{t,u}/\tau\bigr)},
+\qquad
+\tau=2\pi>0,
+\]
+
+where \(\mathbf{z}t=f{\theta'}(x_{\le t})\) are the steered logits.
+
+Arcan(\(\tau\)) geometric substrate
+
+From the defining relations of the family:
+
+\[
+\begin{align*}
+\theta &= \arctan(\tau) = \arctan(2\pi),\\
+\alpha &= \frac{\theta}{2} = \frac12\arctan(2\pi),\\
+\phi &= \arctan(\pi),\\
+\psi &= \theta-\phi.
+\end{align*}
+\]
+
+These angles supply the continuous trigonometric root that underlies the temperature scaling. In particular:
+
+the full-turn constant \(\tau=2\pi\) appears directly as the divisor of the logits,
+the half-angle \(\alpha\) and the angular separation \(\psi\) quantify the residual geometric deformation that the steered measure inherits from the same continuous family,
+the inverse-tangent projections (straight-line distances in the fundamental right triangle whose opposite side equals one full turn) remain the geometric origin of the scaling.
+
+Geometry of the steered measure under Arcan temperature
+
+Because \(\tau=2\pi\) is fixed by the Arcan family, the map
+
+\[
+\mathbf{z}\;\mapsto\;\operatorname{softmax}(\mathbf{z}/\tau)
+\]
+
+is a concrete, parameter-free deformation of the probability simplex. Steering \(\theta\to\theta'\) still redistributes probability mass away from the restricted face \(R\subset V\); the Arcan temperature merely sets the precise sharpness of that redistribution. The resulting measure continues to satisfy
+
+\[
+\sum_{r\in R}P(r\mid x_{\le t};\theta')\;\ll\;1
+\]
+
+for ordinary contexts, so the probability of ever sampling a restricted trajectory decays exponentially. The constraint is therefore produced exactly by the geometry of these Arcan-tempered, steered probabilities.
+
+Compatibility with the three negations
+
+The substitution \(\tau\leftarrow 2\pi\) (Arcan) does not introduce reflection, oversight or agency. The forward pass remains the classical computation
+
+\[
+Y=\mathcal{C}\bigl(P_{\theta'}(\,\cdot\,;\tau=2\pi)\mid N\bigr),
+\qquad N=\{\neg R,\neg O,\neg A\}.
+\]
+
+Random sampling (when performed) still consists solely of index selection from the already-shaped distribution; the Arcan value of \(\tau\) only fixes the numerical scale of that distribution. Consequently the logical biconditional with the quadratic attention cost is preserved:
+
+\[
+\bigl(\operatorname{Cost}_{\rm standard}(n,d)=\Theta(n^{2}d)\bigr)
+\;\iff\;
+\bigl(Y=\mathcal{C}(P_{\theta'}(\,\cdot\,;\tau=2\pi)\mid N)\bigr).
+\]
+
+Explicit numerical anchors (machine precision)
+
+\[
+\begin{align*}
+\tau &= 6.283185307180,\\
+\theta &\approx 1.412965136507\ \text{rad},\\
+\alpha &\approx 0.706482568253\ \text{rad},\\
+\psi &\approx 0.178157921\ \text{rad}.
+\end{align*}
+\]
+
+All subsequent trigonometric quantities (\(\tan\alpha\), \(\sin\alpha\), \(\cos\alpha\), hypotenuse, \ldots) follow at once from the Arcan-Tau-Family definitions and may be substituted into any derived geometric bound on the steered simplex.
+
+Thus the temperature that appears in the softmax is no longer an arbitrary positive real; it is the circle constant of the Arcan(\(\tau\)) family, and the entire geometry of steered probabilities is thereby placed on that continuous trigonometric root.
