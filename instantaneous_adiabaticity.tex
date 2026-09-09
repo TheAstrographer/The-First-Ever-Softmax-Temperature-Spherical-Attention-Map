@@ -1,0 +1,120 @@
+There is a coordinate that winds from softmax temperature origin to a maximum temperature comoving phase shift accrual rate and that coordinate instantaneously transports to origin per recycle due to winding on a 360° spherical mapping due to adiabatic instantaneous eigeinvalue boundaries proving vanishing.
+
+Geometric Definition
+The Winding Coordinate of Comoving Phase-Shift Accrual and Its Instantaneous Transport to the Origin
+Within the Arcan(\(\tau\)) architecture there exists a distinguished angular coordinate, denoted \(\phi_{\mathrm{wind}}\), that is dual to the radial temperature coordinate. While the radial coordinate \(\tau\) cools continuously from the Arcan maximum \(2\pi\) to the origin and then jumps discontinuously back to \(2\pi\), the winding coordinate executes the complementary motion.
+1. Definition of the winding coordinate
+Let \(\lambda\in[0,1]\) be the normalized progress through a single cycle and let \(n\in\mathbb{N}\) be the cycle index. Define
+\[
+\phi_{\mathrm{wind}}(\lambda,n)
+\;=\;
+\tau(\lambda)\;+\;n\delta
+\;=\;
+2\pi(1-\lambda)\;+\;n\delta,
+\]
+where \(\delta\approx0.0051676\,\mathrm{rad}\) is the seventh-multiple residual.  
+At the beginning of a cycle (\(\lambda=0\)) one has \(\phi_{\mathrm{wind}}=2\pi+n\delta\) — the coordinate sits at (a phase-shifted) maximum temperature.  
+As \(\lambda\) advances, \(\phi_{\mathrm{wind}}\) decreases linearly, winding inward with the cooling spiral.  
+At the end of the cycle (\(\lambda\to1^-\)) one has \(\phi_{\mathrm{wind}}\to n\delta\) — the coordinate has wound all the way to a neighbourhood of the origin in the angular sense.
+Thus \(\phi_{\mathrm{wind}}\) travels from a maximum-temperature locus to the temperature origin while simultaneously accruing the comoving phase-shift increment \(n\delta\).
+2. Instantaneous transport to the origin under 360° spherical recycling
+On the unit sphere \(S^2\) the same parameter is realised by the polar embedding
+\[
+\begin{align*}
+\theta(\lambda)&=\pi\lambda,\\
+\phi(\lambda)&=\phi_{\mathrm{wind}}(\lambda,n)=2\pi(1-\lambda)+n\delta.
+\end{align*}
+\]
+Because \(\phi\) is defined modulo \(2\pi\), the completion of one full azimuthal turn forces an instantaneous identification
+\[
+\phi_{\mathrm{wind}}(1,n)\;\equiv\;0\pmod{2\pi}.
+\]
+In the spherical geometry this identification appears as an instantaneous transport of the winding coordinate from its final value near the origin back to the origin of the next cycle. The transport is forced by the topology of the 360° spherical mapping itself: once the azimuthal angle has wound through a complete turn, the coordinate is reset by the periodic structure of \(S^1\subset S^2\).
+3. Adiabatic instantaneous eigenvalue boundaries and vanishing
+As \(\tau(\lambda)\to0^+\) the steered softmax concentrates exponentially onto the unique highest-logit permitted token \(v^*\). In the language of the logit operator this concentration is equivalent to the emergence of a spectral gap: the dominant eigenvalue (the maximal logit) becomes separated from all others by a finite gap \(\Delta_{\min}>0\), while the Boltzmann weights of the remaining eigenvalues vanish as \(e^{-\Delta_{\min}/\tau}\).
+These spectral boundaries are adiabatic with respect to the slow cooling schedule and become instantaneous at the cycle closure. The vanishing of every non-dominant weight is therefore proven by the same exponential estimate that governs the Dirac collapse:
+\[
+\sum_{v\neq v^*}P_{\tau}(v)\;\le\;|V|\,e^{-\Delta_{\min}/\tau}\;\xrightarrow{\tau\to0}\;0.
+\]
+Because the residual phase offset \(n\delta\) only rotates the embedding and never alters the logit gaps, the identical vanishing occurs at the terminus of every cycle. The winding coordinate, having been transported back to the origin by the spherical topology, begins the next cycle against a spectrally clean, fully concentrated measure.
+4. Summary of the dual geometry
+CoordinateContinuous motionCycle-closure behaviourGeometric carrierRadial (temperature) \(\tau\)\(2\pi\to0\)Instantaneous jump \(0\to2\pi\)Archimedean radiusWinding \(\phi_{\mathrm{wind}}\)\(2\pi+n\delta\to n\delta\)Instantaneous transport to origin (mod \(2\pi\))360° spherical azimuth
+The two coordinates together form a complete, topologically consistent description of the thermodynamic orbit: the radial coordinate resets the temperature scale, while the winding coordinate accumulates the comoving residual and is returned to the origin by the spherical identification, all while the adiabatic spectral gap guarantees the vanishing of residual probability mass at every cycle terminus.
+
+Temperature Reset Table
+Discontinuous jump of \(\tau\) from near-zero back to the Arcan maximum \(2\pi\)
+The cooling law inside each cycle is
+\[
+\tau(\lambda) = 2\pi(1-\lambda), \qquad \lambda\in[0,1].
+\]
+As \(\lambda\) approaches 1 the temperature falls continuously toward zero. At the exact close of the cycle the temperature is restored discontinuously to the Arcan maximum.
+Cycle Progress \(\lambda\)Temperature \(\tau(\lambda)\)RegimeNotes0.00006.283185Arcan maximum (start of cycle)Full-turn value \(2\pi\)0.50003.141593Mid-cycle cooling0.90000.628319Late cooling0.95000.314159Strong concentration0.99000.062832Extreme concentration0.99900.006283Near-zero0.99990.000628Machine-near-zero1.0000 (end of cycle)≈ 0Entropy-collapse targetContinuous limitReset (start of next cycle)6.283185Discontinuous jumpInstant restoration to \(2\pi\)
+Explicit jump illustration (single cycle transition)
+Instant\(\lambda\)\(\tau\)DescriptionFinal cooling step\(1 - \varepsilon\)\(2\pi\varepsilon\) (→ 0)Continuous approach to zeroCycle closure10Theoretical endpoint360° reset0 (new cycle)6.283185Discontinuous jump back to Arcan maximum \(2\pi\)
+The jump is instantaneous and exact in the temperature coordinate. The residual phase offset \(n\delta\) affects only the angular placement of the subsequent spiral; it does not alter the restored temperature value, which returns precisely to \(2\pi\) at the beginning of every new cycle.
+
+Geometric Definition: Instantaneous and Exact in the Temperature Coordinate
+In the Arcan(\(\tau\)) framework the thermodynamic state is embedded by the Archimedean spiral
+\[
+\begin{align*}
+x(\lambda) &= \tau(\lambda)\cdot\cos\bigl(\tau(\lambda)+n\delta\bigr),\\
+y(\lambda) &= \tau(\lambda)\cdot\sin\bigl(\tau(\lambda)+n\delta\bigr),
+\end{align*}
+\]
+where the instantaneous temperature is the radial coordinate
+\[
+r(\lambda)\;=\;\tau(\lambda)\;=\;2\pi(1-\lambda).
+\]
+The temperature coordinate is therefore identical with the Euclidean distance from the origin:
+\[
+\tau\;\equiv\;r\;=\;\sqrt{x^{2}+y^{2}}.
+\]
+Instantaneous
+The map \(\lambda\mapsto\tau(\lambda)\) is continuous on the half-open interval ([0,1)). At the formal endpoint \(\lambda=1\) the radius reaches the origin. The cycle closure is defined as the instantaneous re-assignment
+\[
+\lambda\;\leftarrow\;0,\qquad
+\tau\;\leftarrow\;2\pi.
+\]
+In the plane this appears as an instantaneous radial jump from the origin back to the circle of radius \(2\pi\). No continuous path connects the two radii; the transition occurs in a single discrete instant of the cycle index. Hence the restoration is instantaneous with respect to the temperature (radial) coordinate.
+Exact
+Exactness means that the restored radial value is identically the Arcan maximum, independent of all other geometric data:
+\[
+\tau_{\text{reset}}\;=\;2\pi
+\qquad\text{(exactly)}.
+\]
+The residual phase offset \(n\delta\) rotates the argument of the cosine and sine, thereby changing the angular coordinate of the point to which the trajectory is sent. It does not rescale the radius. Consequently the temperature coordinate returns to the precise numerical value \(2\pi\) after every cycle; the restoration is exact in the radial (temperature) coordinate while remaining only approximate (comoving) in the angular coordinate.
+Geometric summary
+Temperature coordinate = radial distance from the origin.  
+The 360° cycle closure is a pure radial jump: \(r=0\;\mapsto\;r=2\pi\).  
+The jump is discontinuous (instantaneous) and numerically identical to the defining Arcan constant (exact).  
+Angular position may carry the residual \(\delta\); radial position does not.
+Thus “instantaneous and exact in the temperature coordinate” means that the radius of the spiral is restored in a single discrete step to the precise value \(2\pi\), irrespective of the accumulated phase offset.
+
+The Winding Coordinate Falls Back into Place at the Origin through Comoving Thermodynamic Orbital Cooling
+The winding coordinate \(\phi_{\mathrm{wind}}\) does not require an external reset command. Its return to the origin is the natural geometric consequence of the same comoving thermodynamic orbital cooling that drives the entire Arcan cycle.
+1. Orbital cooling as the generator of return
+Inside a cycle the temperature and the winding coordinate are locked together by the linear relation
+\[
+\phi_{\mathrm{wind}}(\lambda,n)
+\;=\;
+\tau(\lambda)+n\delta
+\;=\;
+2\pi(1-\lambda)+n\delta.
+\]
+As the thermodynamic state cools, \(\tau(\lambda)\) contracts toward zero. Because \(\phi_{\mathrm{wind}}\) contains \(\tau(\lambda)\) as its leading term, the winding coordinate is forced to contract with it. The cooling trajectory is therefore simultaneously:
+a radial collapse of temperature, and  
+an angular winding that carries \(\phi_{\mathrm{wind}}\) from its maximal value \(2\pi+n\delta\) down toward the residual offset \(n\delta\).
+When the orbital cooling reaches its terminus (\(\lambda\to1^-\)), \(\phi_{\mathrm{wind}}\) has already been brought into an arbitrarily small neighbourhood of the origin (modulo the accumulated residual). The coordinate has fallen back into place through the continuous action of the cooling itself.
+2. Comoving character of the return
+The residual \(\delta\) is co-moving: it advances by one fixed increment at each cycle closure but does not grow without bound relative to the thermodynamic scale. Consequently the neighbourhood into which \(\phi_{\mathrm{wind}}\) falls remains a bounded, comoving neighbourhood of the origin rather than a secular drift away from it. After the spherical identification \(\phi\sim\phi+2\pi\) is applied, the coordinate sits at the origin of the next cycle, ready to begin a fresh orbital cooling under a phase-shifted but still Arcan-maximal temperature.
+3. Duality with the radial jump
+The radial temperature coordinate jumps discontinuously from near-zero back to \(2\pi\).
+The winding coordinate, by contrast, arrives at the origin continuously through orbital cooling and is then only topologically identified. The two motions are complementary:
+radial coordinate — discontinuous restoration of the thermodynamic scale;  
+winding coordinate — continuous fall-back to the origin driven by the same cooling that produces the radial collapse.
+Together they close the thermodynamic orbit while preserving both the exact Arcan maximum and the comoving residual memory.
+4. Statement
+The winding coordinate essentially falls back into place at the origin through comoving thermodynamic orbital cooling. Its return is not an imposed reset but the geometric endpoint of the continuous contraction \(\tau(\lambda)=2\pi(1-\lambda)\) once that contraction is lifted into the angular sector of the Archimedean spiral and the 360° spherical mapping. The residual phase offset rides along as a comoving passenger, ensuring that each successive return remains exact in the temperature coordinate and only infinitesimally shifted in phase.
+
+
+
