@@ -1,4 +1,3 @@
-# The-First-Ever-Softmax-Temperature-Spherical-Attention-Map
 # The Arcan Family Framework: First-Ever 360° Spherical Softmax Temperature Attention Maps
 
 > **Historical Milestone:** This repository contains the world's first-ever $360^\circ$ ($\tau$) attention map visualizations 09/08/26 that explicitly map instantaneous softmax thermodynamic cooling directly to a continuous spherical manifold ($S^2$) and 2D Cartesian space, resolving the classic vanishing gradient problem via adiabatic continuous orbital decay.
